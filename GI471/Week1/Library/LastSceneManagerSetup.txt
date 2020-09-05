@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Scenes/HW01_GI471.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
