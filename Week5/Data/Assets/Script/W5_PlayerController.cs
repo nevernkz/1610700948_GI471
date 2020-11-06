@@ -8,8 +8,8 @@ public class W5_PlayerController : MonoBehaviour
 
     public void Update()
     {
-        playerMovement.Setinput_Horizontal(Input.GetAxis("Horizontal"));
-        playerMovement.Setinput_Vertical(Input.GetAxis("Vertical"));
+        playerMovement.SetInput_Horizontal(Input.GetAxis("Horizontal"));
+        playerMovement.SetInput_Vertical(Input.GetAxis("Vertical"));
         playerMovement.SetInput_Jump(Input.GetKeyDown(KeyCode.Space));
         
     }
