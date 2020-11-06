@@ -7,47 +7,45 @@ using UnityEngine.Events;
 public class EventManager : MonoBehaviour
 {
     Dictionary<string, UnityEvent> eventDict = new Dictionary<string, UnityEvent>();
-    public static EventManager instance;
-    void Start()
+
+    public static EventManager instace;
+
+    private void Awake()
     {
-        instance = this;
+        instace = this;
     }
 
-    // Update is called once per frame
-    public void StartListening(string eventName,UnityAction listenner)
+    public void StartListening(string eventName, UnityAction listener)//เริ่ม listening
     {
-      
-        if (eventDict.ContainsKey(eventName))
+
+        if (eventDict.ContainsKey(eventName))//เคยสร้าง listener
         {
             UnityEvent thisEventDict = eventDict[eventName];
-            thisEventDict.AddListener(listenner);
+            thisEventDict.AddListener(listener);
         }
-        else
+        else//ยังไม่เคยสร้าง listener
         {
             UnityEvent thisEvent = new UnityEvent();
-            thisEvent.AddListener(listenner);
+            thisEvent.AddListener(listener);
             eventDict.Add(eventName, thisEvent);
         }
-   
     }
-
-    public void StopListening(string eventName, UnityAction listenner)
+    public void StopListening(string eventName, UnityAction listener)//หยุด listening
     {
         if (eventDict.ContainsKey(eventName))
         {
             UnityEvent thisEvent = eventDict[eventName];
-            thisEvent.RemoveListener(listenner);
-
+            thisEvent.RemoveListener(listener);
         }
     }
-
-    public void TriggerEvent(string eventName)
+    public void TriggerEvent(string eventName)//triggrt event ต่าง ๆ ที่เราจะใช้
     {
-        if(eventDict.ContainsKey(eventName))
+        if (eventDict.ContainsKey(eventName))
         {
             UnityEvent thisEvent = eventDict[eventName];
             thisEvent.Invoke();
-
         }
     }
+
+
 }

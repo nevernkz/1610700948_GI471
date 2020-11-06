@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gametest : MonoBehaviour
+public class GameTest : MonoBehaviour
 {
-    public Spawnermanager spawnermanager;
-    public EventManager eventManager;
-    public void Update()
+    public SpawnerManager spawnerManager;
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-
-            EventManager.instance.TriggerEvent("Spawn");
+            SpawnerManager.instance.Spawn();
         }
+        
     }
 }
